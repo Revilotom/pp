@@ -1,17 +1,8 @@
-import 'dart:math';
 
-int recCounter = 0;
-int recMergeCounter = 0;
-int counter = 0;
-main() {
-  print("hello world");
+List<num> quickSortIterative(List<num> paramList) {
 
-  List<num> list = [5, 11, 10, 8, 2, 9, 0, -8.9];
-  sortIterative(list);
-  print(list);
-}
-
-sortIterative(List<num> list) {
+  List<num> list = []..addAll(paramList);
+  
   List<List<num>> toDo = [
     [0, list.length - 1]
   ];
@@ -26,17 +17,22 @@ sortIterative(List<num> list) {
     toDo.insert(0, [l[0], pivotPos - 1]);
     toDo.insert(0, [pivotPos, l[1]]);
   }
-  print(list);
+  return list;
 }
 
+List<num> quickSortRecursive(list){
+  List<num> l = []..addAll(list);
+  quickSortRecursiveHelper(l, 0, l.length - 1);
+  return l;
+}
 // In place
-sortRecursive(List<num> list, startIndex, lastIndex) {
+ quickSortRecursiveHelper(List<num> list, startIndex, lastIndex) {
   if (lastIndex - startIndex < 2) {
     return;
   }
   var pivotPos = partiton(list, startIndex, lastIndex);
-  sortRecursive(list, startIndex, pivotPos - 1);
-  sortRecursive(list, pivotPos, lastIndex);
+  quickSortRecursiveHelper(list, startIndex, pivotPos - 1);
+  quickSortRecursiveHelper(list, pivotPos, lastIndex);
 }
 
 int partiton(List<num> list, int low, high) {

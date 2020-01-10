@@ -3,43 +3,43 @@
 int recCounter = 0;
 int recMergeCounter = 0;
 
-
-main() {
-  print("hello world");
-
-  List<num> l = [
-    5,
-    11,
-    4,
-    8,
-    2,
-    9,
-    0,
-    -8.9,
-    5,
-    11,
-    4,
-    8,
-    2,
-    9,
-    0,
-    -8.9,
-  ];
-  List<num> rec = sortRecursive(l);
-  print(rec);
-  print("rec counter " + recCounter.toString());
-  print("rec merge counter " + recMergeCounter.toString());
-  List<num> iter = sortIterative(l);
-
-  print(iter);
-
-  for (int i = 0; i < iter.length; i++){
-    assert(iter[i] == rec[i]);
-  }
-}
+//
+//main() {
+//  print("hello world");
+//
+//  List<num> l = [
+//    5,
+//    11,
+//    4,
+//    8,
+//    2,
+//    9,
+//    0,
+//    -8.9,
+//    5,
+//    11,
+//    4,
+//    8,
+//    2,
+//    9,
+//    0,
+//    -8.9,
+//  ];
+//  List<num> rec = sortRecursive(l);
+//  print(rec);
+//  print("rec counter " + recCounter.toString());
+//  print("rec merge counter " + recMergeCounter.toString());
+//  List<num> iter = sortIterative(l);
+//
+//  print(iter);
+//
+//  for (int i = 0; i < iter.length; i++){
+//    assert(iter[i] == rec[i]);
+//  }
+//}
 
 // Breadth first
-List<num> sortIterative(List<num> list) {
+List<num> mergeSortIterative(List<num> list) {
   List<List<num>> q = [list];
   List<List<num>> processed = [];
 
@@ -78,7 +78,7 @@ List<num> sortIterative(List<num> list) {
 }
 
 // Depth first
-List<num> sortRecursive(List<num> list) {
+List<num> mergeSortRecursive(List<num> list) {
   recCounter++;
 
   if (list.length == 1) {
@@ -89,8 +89,8 @@ List<num> sortRecursive(List<num> list) {
   final List<num> left = list.sublist(0, midPoint + 1);
   final List<num> right = list.sublist(midPoint + 1);
 
-  final List<num> compL = sortRecursive(left);
-  final List<num> compR = sortRecursive(right);
+  final List<num> compL = mergeSortRecursive(left);
+  final List<num> compR = mergeSortRecursive(right);
 
   final List<num> merged = merge(compL, compR);
   recMergeCounter++;
