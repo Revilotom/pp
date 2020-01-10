@@ -1,5 +1,9 @@
+
+
 int recCounter = 0;
 int recMergeCounter = 0;
+
+
 main() {
   print("hello world");
 
@@ -29,7 +33,9 @@ main() {
 
   print(iter);
 
-  assert(iter == rec);
+  for (int i = 0; i < iter.length; i++){
+    assert(iter[i] == rec[i]);
+  }
 }
 
 // Breadth first
@@ -85,6 +91,7 @@ List<num> sortRecursive(List<num> list) {
 
   final List<num> compL = sortRecursive(left);
   final List<num> compR = sortRecursive(right);
+
   final List<num> merged = merge(compL, compR);
   recMergeCounter++;
   return merged;
