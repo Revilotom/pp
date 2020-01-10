@@ -6,25 +6,37 @@ int counter = 0;
 main() {
   print("hello world");
 
-  List<num> l = [5, 11, 10, 8, 2, 9, 0, -8.9];
-  sortRecursive(l, 0, l.length - 1);
-  print(l);
-
+  List<num> list = [5, 11, 10, 8, 2, 9, 0, -8.9];
+  sortIterative(list);
+  print(list);
 }
 
-List<num> sortIterative(List<num> list) {
-  return list;
+sortIterative(List<num> list) {
+  List<List<num>> toDo = [
+    [0, list.length - 1]
+  ];
+  while (toDo.isNotEmpty) {
+    var l = toDo.removeLast();
+
+    if (l[1] - l[0] < 2) {
+      continue;
+    }
+
+    var pivotPos = partiton(list, l[0], l[1]);
+    toDo.insert(0, [l[0], pivotPos - 1]);
+    toDo.insert(0, [pivotPos, l[1]]);
+  }
+  print(list);
 }
 
 // In place
 sortRecursive(List<num> list, startIndex, lastIndex) {
-
-  if (lastIndex - startIndex < 2){
+  if (lastIndex - startIndex < 2) {
     return;
   }
-    var pivotPos = partiton(list, startIndex, lastIndex);
-    sortRecursive(list, startIndex, pivotPos - 1);
-    sortRecursive(list, pivotPos, lastIndex);
+  var pivotPos = partiton(list, startIndex, lastIndex);
+  sortRecursive(list, startIndex, pivotPos - 1);
+  sortRecursive(list, pivotPos, lastIndex);
 }
 
 int partiton(List<num> list, int low, high) {
