@@ -1,5 +1,3 @@
-import 'dart:math';
-
 int recCounter = 0;
 int recMergeCounter = 0;
 main() {
@@ -42,7 +40,6 @@ List<num> sortIterative(List<num> list) {
   int firstWhileCounter = 0;
 
   // This is O(n)
-
   while (q.isNotEmpty) {
     firstWhileCounter++;
     List<num> l = q.removeLast();
@@ -98,6 +95,7 @@ int add(int index, List<num> list, List<num> n) {
   return index + 1;
 }
 
+//O(n)
 merge(List<num> left, List<num> right) {
   List<num> n = [];
   int lIndex = 0;
