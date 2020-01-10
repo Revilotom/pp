@@ -6,7 +6,7 @@ int counter = 0;
 main() {
   print("hello world");
 
-  List<num> l = [5, 11, 4, 8, 2, 9, 0, -8.9,5, 11, 4, 8, 2, 9, 0, -8.9];
+  List<num> l = [5, 11, 10, 8, 2, 9, 0, -8.9];
   sortRecursive(l, 0, l.length - 1);
   print(l);
 
@@ -24,7 +24,7 @@ sortRecursive(List<num> list, startIndex, lastIndex) {
   }
     var pivotPos = partiton(list, startIndex, lastIndex);
     sortRecursive(list, startIndex, pivotPos - 1);
-    sortRecursive(list, pivotPos + 1, lastIndex);
+    sortRecursive(list, pivotPos, lastIndex);
 }
 
 int partiton(List<num> list, int low, high) {
