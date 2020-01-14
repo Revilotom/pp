@@ -3,41 +3,6 @@
 int recCounter = 0;
 int recMergeCounter = 0;
 
-//
-//main() {
-//  print("hello world");
-//
-//  List<num> l = [
-//    5,
-//    11,
-//    4,
-//    8,
-//    2,
-//    9,
-//    0,
-//    -8.9,
-//    5,
-//    11,
-//    4,
-//    8,
-//    2,
-//    9,
-//    0,
-//    -8.9,
-//  ];
-//  List<num> rec = sortRecursive(l);
-//  print(rec);
-//  print("rec counter " + recCounter.toString());
-//  print("rec merge counter " + recMergeCounter.toString());
-//  List<num> iter = sortIterative(l);
-//
-//  print(iter);
-//
-//  for (int i = 0; i < iter.length; i++){
-//    assert(iter[i] == rec[i]);
-//  }
-//}
-
 // Breadth first
 List<num> mergeSortIterative(List<num> list) {
   List<List<num>> q = [list];
@@ -128,3 +93,31 @@ merge(List<num> left, List<num> right) {
       right.toString());
   return n;
 }
+
+
+// Haskell implementation
+
+//import Data.List
+//import qualified Data.IntMap as IntMap
+//
+//s :: [Int] -> [Int]
+//s [] = []
+//s [x] = [x]
+//s (x:xs) = merge lSorted rSorted
+//where
+//(left, right) = splitAt ((length(x:xs))`div`2) (x:xs)
+//lSorted = s left
+//rSorted = s right
+//
+//
+//
+//merge :: [Int] -> [Int] -> [Int]
+//merge [] [] = []
+//merge (x:xs) [] = (x:xs)
+//merge [] (y:ys) = (y:ys)
+//merge (x:xs) (y:ys) | x < y = x:(merge xs (y:ys))
+//| otherwise = y:(merge ys (x:xs))
+//
+//main :: IO ()
+//main = do
+//print $ s [5, 11, 10, 8, 2, 9, 0, 1, 0, 8, 9]
