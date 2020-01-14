@@ -96,18 +96,16 @@ merge(List<num> left, List<num> right) {
 
 
 // Haskell implementation
-
 //import Data.List
 //import qualified Data.IntMap as IntMap
 //
 //s :: [Int] -> [Int]
 //s [] = []
 //s [x] = [x]
-//s (x:xs) = merge lSorted rSorted
+//s (xs) = merge (s left) (s right)
 //where
-//(left, right) = splitAt ((length(x:xs))`div`2) (x:xs)
-//lSorted = s left
-//rSorted = s right
+//(left, right) = splitAt ((length(xs))`div`2) (xs)
+//
 //
 //
 //
