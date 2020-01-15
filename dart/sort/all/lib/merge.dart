@@ -74,9 +74,11 @@ merge(List<num> left, List<num> right) {
   int rIndex = 0;
   for (int i = 0; i < left.length + right.length; i++) {
     if (lIndex >= left.length) {
-      rIndex = add(rIndex, right, n);
+      n.addAll(right.sublist(rIndex));
+      break;
     } else if (rIndex >= right.length) {
-      lIndex = add(lIndex, left, n);
+      n.addAll(left.sublist(lIndex));
+      break;
     } else {
       if (left[lIndex] <= right[rIndex]) {
         lIndex = add(lIndex, left, n);
@@ -85,6 +87,8 @@ merge(List<num> left, List<num> right) {
       }
     }
   }
+
+
   print("merge loop: " +
       (left.length + right.length).toString() +
       " " +
